@@ -9,9 +9,10 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     // Two important classses
     // MediaPlayer & AudioPlayer
-    private MediaPlayer mp;
+    public MediaPlayer mp;
+    Button play_but = (Button) findViewById(R.id.play_but);
+
     @Override
-    Button play_but = findViewById(play)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 //        mp.start();
     }
 
-    public void play(View) { mp.start(); }
+    public void play(View v) { mp.start(); }
 
 //    public void stop(View) { mp.stop(); }
 
