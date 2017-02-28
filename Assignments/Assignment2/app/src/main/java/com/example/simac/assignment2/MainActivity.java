@@ -1,5 +1,7 @@
 package com.example.simac.assignment2;
 
+import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void accel(View v){
         Log.v("TAAG", "Pressed accel.");
+        startActivityForResult(new Intent(getBaseContext(), Graph.class), 1);
     }
     public void prox(View v) {
         Log.v("TAAG", "Pressed prox");
