@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
-    TextView res_value = (TextView) get
+    TextView res_value = (View) findViewById(R.id.res_value);
+    TextView res_label = (View) findViewById(R.id.res_label);
 
     private SensorManager sm;
     private Sensor light, gravity, accelerometer;
