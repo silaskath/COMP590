@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:rowCount="12"
+    android:columnCount="4"
+    tools:context="edu.unc.svkathcs.assignment1.MainActivity"
+        android:id="@+id/gridLayout">
+
+    <TextView
+        android:text="0"
+        android:textColor="#000000"
+        android:id="@+id/grid00"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="1"
+        android:textColor="#000000"
+        android:id="@+id/grid01"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="2"
+        android:textColor="#000000"
+        android:id="@+id/grid02"
+        android:layout_row="0"
+        android:layout_column="2"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="3"
+        android:textColor="#000000"
+        android:id="@+id/grid03"
+        android:layout_row="0"
+        android:layout_column="3"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold"/>
+    <TextView
+        android:text="4"
+        android:textColor="#000000"
+        android:id="@+id/grid04"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="5"
+        android:textColor="#000000"
+        android:id="@+id/grid05"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="6"
+        android:textColor="#000000"
+        android:id="@+id/grid06"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="7"
+        android:textColor="#000000"
+        android:id="@+id/grid07"
+        android:layout_row="1"
+        android:layout_column="3"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold"/>
+    <TextView
+        android:text="8"
+        android:textColor="#000000"
+        android:id="@+id/grid08"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="9"
+        android:textColor="#000000"
+        android:id="@+id/grid09"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="10"
+        android:textColor="#000000"
+        android:id="@+id/grid10"
+        android:layout_row="2"
+        android:layout_column="2"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="11"
+        android:textColor="#000000"
+        android:id="@+id/grid11"
+        android:layout_row="2"
+        android:layout_column="3"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold"/>
+    <TextView
+        android:text="12"
+        android:textColor="#000000"
+        android:id="@+id/grid12"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="13"
+        android:textColor="#000000"
+        android:id="@+id/grid13"
+        android:layout_row="3"
+        android:layout_column="1"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="14"
+        android:textColor="#000000"
+        android:id="@+id/grid14"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold" />
+    <TextView
+        android:text="15"
+        android:textColor="#000000"
+        android:id="@+id/grid15"
+        android:layout_row="3"
+        android:layout_column="3"
+        android:minWidth="60dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:textStyle="bold"/>
+
+
+    <Button
+        android:id="@+id/but_a"
+        android:text="A: 0 1 2"
+        android:onClick="buttonPress_A"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_b"
+        android:text="B: 3 7 9 11"
+        android:onClick="buttonPress_B"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="4"
+        android:layout_column="2"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_c"
+        android:text="C: 4 10 14 15"
+        android:onClick="buttonPress_C"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_d"
+        android:text="D: 0 4 5 6 7"
+        android:onClick="buttonPress_D"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="5"
+        android:layout_column="2"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_e"
+        android:text="E: 6 7 8 10 12"
+        android:onClick="buttonPress_E"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_f"
+        android:text="F: 0 2 14 15"
+        android:onClick="buttonPress_F"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="6"
+        android:layout_column="2"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_g"
+        android:text="G: 3 14 15"
+        android:onClick="buttonPress_G"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="7"
+        android:layout_column="0"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_h"
+        android:text="H: 4 5 7 14 15"
+        android:onClick="buttonPress_H"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="7"
+        android:layout_column="2"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_i"
+        android:text="I: 1 2 3 4 5"
+        android:onClick="buttonPress_I"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="8"
+        android:layout_column="0"
+        android:layout_columnSpan="2"/>
+    <Button
+        android:id="@+id/but_j"
+        android:text="J: 3 4 5 9 13"
+        android:onClick="buttonPress_J"
+        android:minHeight="10dp"
+        android:minWidth="120dp"
+        android:layout_row="8"
+        android:layout_column="2"
+        android:layout_columnSpan="2"/>
+
+</GridLayout>
+
+    <TextView
+        android:text="Move\nCount"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MoveCountLabel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/gridLayout"
+        android:layout_toStartOf="@+id/gridLayout" />
+    <TextView
+        android:text="0"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/move_count"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/gridLayout"
+        android:layout_toStartOf="@+id/gridLayout"
+        android:layout_below="@+id/MoveCountLabel"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linear">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:text="Restart"
+                android:onClick="newGame"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:id="@+id/restart" />
+
+
+            <Button
+                android:text="Solve"
+                android:onClick="showSolution"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:id="@+id/auto" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:text="Move\nHistory"
+        android:id="@+id/history_label"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/gridLayout"
+        android:layout_toEndOf="@+id/gridLayout"
+        />
+
+    <TextView
+        android:id="@+id/history"
+        android:text=""
+
+        android:scrollbars="vertical"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/history_label"
+        android:layout_toRightOf="@+id/gridLayout"
+        android:layout_alignRight="@+id/history_label"
+        android:layout_alignEnd="@+id/history_label"
+        android:layout_alignBottom="@+id/gridLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/solution"
+        android:text="Solution: "
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_below="@+id/gridLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/linear"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+
+</RelativeLayout>
+
