@@ -17,8 +17,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
-    TextView res_value = (View) findViewById(R.id.res_value);
-    TextView res_label = (View) findViewById(R.id.res_label);
+//    TextView res_value = (TextView) findViewById(R.id.res_value);
+//    TextView res_label = (TextView) findViewById(R.id.res_label);
 
     private SensorManager sm;
     private Sensor light, gravity, accelerometer;
