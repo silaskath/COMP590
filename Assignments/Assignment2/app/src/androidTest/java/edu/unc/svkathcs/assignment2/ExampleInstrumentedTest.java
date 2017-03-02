@@ -1,4 +1,4 @@
-package com.example.simac.assignment2;
+package edu.unc.svkathcs.assignment2;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.simac.assignment2", appContext.getPackageName());
+        assertEquals("edu.unc.svkathcs.assignment2", appContext.getPackageName());
     }
 }

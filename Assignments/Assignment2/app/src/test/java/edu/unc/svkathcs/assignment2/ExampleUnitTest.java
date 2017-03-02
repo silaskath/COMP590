@@ -1,4 +1,4 @@
-package com.example.simac.assignment2;
+package edu.unc.svkathcs.assignment2;
 
 import org.junit.Test;
 
