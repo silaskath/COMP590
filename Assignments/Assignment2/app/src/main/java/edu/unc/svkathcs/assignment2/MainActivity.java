@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.FloatProperty;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,10 +17,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
     private SensorManager sm;
-    private Sensor accel, light, prox, gyro;
-    TextView temp;
-    TextView temp_2;
-    TextView temp_3;
+    private Sensor sensor, accel, light, mag;
+    TextView temp, accel_stat, accel_info, light_stat, light_info, mag_stat, mag_info;
+
 
 
     @Override
@@ -29,25 +29,90 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accel = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         light = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
-        prox = sm.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-        gyro = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        sm.registerListener(this, light, 1);
+        mag = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+//        sensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+//        sm.registerListener(this, sensor, 100000000);
 //        sm.registerListener(this, grav, 1);
         temp = (TextView) findViewById(R.id.temp);
-        temp_2 = (TextView) findViewById(R.id.temp_2);
-        temp_3 = (TextView) findViewById(R.id.temp_3);
+        accel_stat = (TextView) findViewById(R.id.accel_stat);
+        accel_info = (TextView) findViewById(R.id.accel_info);
+        light_stat = (TextView) findViewById(R.id.light_stat);
+        light_info = (TextView) findViewById(R.id.light_info);
+        mag_stat = (TextView) findViewById(R.id.mag_stat);
+        mag_info = (TextView) findViewById(R.id.mag_info);
+
+        if(sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
+            accel_stat.setText("Status: Accelerometer is present.");
+            accel_info.setText("Info: " +
+                    accel.getMaximumRange() + ", " +
+                    accel.getResolution() + ", " +
+                    accel.getMaxDelay());
+        }
+        else {
+            accel_stat.setText("Status: Accelerometer is not present.");
+            accel_info.setText("Info: No info to display.");
+        }
+        if(sm.getDefaultSensor(Sensor.TYPE_LIGHT) != null) {
+            light_stat.setText("Status: Light sensor is present.");
+            light_info.setText("Info: " +
+                    light.getMaximumRange() + ", " +
+                    light.getResolution() + ", " +
+                    light.getMaxDelay());
+        }
+        else {
+            light_stat.setText("Status: Light sensor is not present.");
+            light_stat.setText("Info: No info to display.");
+        }
+        if(sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null) {
+            mag_stat.setText("Status: Magnetometer is present.");
+            mag_info.setText("Info: " +
+                    mag.getMaximumRange() + ", " +
+                    mag.getResolution() + ", " +
+                    mag.getMaxDelay());
+        }
+        else {
+            mag_stat.setText("Status: Magnetometer is not present.");
+            mag_info.setText("Info: No info to display.");
+        }
+
     }
 
     public void accelClick(View v) {
-//        Log.v("You clicked it.", Throwable t);
+        loadGraph();
+        sensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sm.registerListener(this, sensor, 100000000);
+    }
+
+    public void lightClick(View v) {
+        loadGraph();
+        sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
+        sm.registerListener(this, sensor, 1000);
+    }
+
+    public void magClick(View v) {
+        loadGraph();
+        sensor = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+//        sm.registerListener(this, mag, 1000);
+    }
+
+    public void loadGraph() {
         Intent graph = new Intent(this, GraphActivity.class);
-        startActivity(graph);
-//        accel = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+//        startActivity(graph);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        String accel_x = event.values[0] + event.values[1] + event.values[2] +"";
+        double x = event.values[0];
+        double y = event.values[1];
+        double z = event.values[2];
+        double data = Math.sqrt(x*x + y*y + z*z);
+//        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            String display = data + "";
+//        }
+
+
+
+
 //        String accel_y = event.values[1] + "";
 //        String accel_z = event.values[2] + "";
 
@@ -57,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //            event_string.concat(event.values[i] + ", ");
 //        }
 
-        temp.setText(accel_x);
+        temp.setText(display);
 //        temp_2.setText(accel_y);
 //        temp_3.setText(accel_z);
     }
