@@ -80,26 +80,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void accelClick(View v) {
         loadGraph();
+        sm.unregisterListener(this);
         sm.registerListener(this, accel, 100000000);
-        sm.unregisterListener(this, light);
-        sm.unregisterListener(this, mag);
         current_sensor = Sensor.TYPE_ACCELEROMETER;
     }
 
     public void lightClick(View v) {
         loadGraph();
-        sm.registerListener(this, light, 1000);
-        sm.unregisterListener(this, accel);
-        sm.unregisterListener(this, mag);
+        sm.unregisterListener(this);
+        sm.registerListener(this, light, 1000000);
         current_sensor = Sensor.TYPE_LIGHT;
     }
 
     public void magClick(View v) {
         loadGraph();
-
-        sm.registerListener(this, mag, 1000);
-        sm.unregisterListener(this, accel);
-        sm.unregisterListener(this, light);
+        sm.unregisterListener(this);
+        sm.registerListener(this, mag, 1000000);
         current_sensor = Sensor.TYPE_MAGNETIC_FIELD;
     }
 
@@ -114,25 +110,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         double y = event.values[1];
         double z = event.values[2];
         double data = Math.sqrt(x*x + y*y + z*z);
-//        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            String display = data + "";
-//        }
-
-
-
-
-//        String accel_y = event.values[1] + "";
-//        String accel_z = event.values[2] + "";
-
-
-
-//        for(int i = 0; i < event.values.length; i++) {
-//            event_string.concat(event.values[i] + ", ");
-//        }
-
+        String display = data + "";
         temp.setText(display);
-//        temp_2.setText(accel_y);
-//        temp_3.setText(accel_z);
     }
 
     @Override
