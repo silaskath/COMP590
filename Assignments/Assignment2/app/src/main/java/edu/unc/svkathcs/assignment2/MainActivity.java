@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private SensorManager sm;
     private Sensor sensor, accel, light, mag;
-    TextView temp, accel_stat, accel_info, light_stat, light_info, mag_stat, mag_info;
+    private TextView temp, accel_stat, accel_info, light_stat, light_info, mag_stat, mag_info;
+    private int current_sensor;
 
 
 
@@ -79,20 +80,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void accelClick(View v) {
         loadGraph();
-        sensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sm.registerListener(this, sensor, 100000000);
+        sm.registerListener(this, accel, 100000000);
+        sm.unregisterListener(this, light);
+        sm.unregisterListener(this, mag);
+        current_sensor = Sensor.TYPE_ACCELEROMETER;
     }
 
     public void lightClick(View v) {
         loadGraph();
-        sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
-        sm.registerListener(this, sensor, 1000);
+        sm.registerListener(this, light, 1000);
+        sm.unregisterListener(this, accel);
+        sm.unregisterListener(this, mag);
+        current_sensor = Sensor.TYPE_LIGHT;
     }
 
     public void magClick(View v) {
         loadGraph();
-        sensor = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-//        sm.registerListener(this, mag, 1000);
+
+        sm.registerListener(this, mag, 1000);
+        sm.unregisterListener(this, accel);
+        sm.unregisterListener(this, light);
+        current_sensor = Sensor.TYPE_MAGNETIC_FIELD;
     }
 
     public void loadGraph() {
