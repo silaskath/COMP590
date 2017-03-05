@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void loadGraph() {
         Intent graph = new Intent(this, GraphActivity.class);
-//        startActivity(graph);
+        startActivity(graph);
     }
 
     public void addSensorValue(Double d) {
@@ -189,7 +189,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 display = display + (i + 1) + ": " + sensor_values.get(i) +
                         "\nAverage: " + getAverage() + "\nStd Dev: " + getStdDev();
             }
-//            display = display ;
             temp.setText(display);
             last_printed = event.timestamp;
         }
