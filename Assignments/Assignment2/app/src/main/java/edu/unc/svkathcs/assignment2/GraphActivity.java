@@ -20,7 +20,7 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
     private int current_sensor;
     private long last_printed = 0;
     private ArrayList<Double> sensor_values = new ArrayList<>();
-    PlotView plot = new PlotView(this.getBaseContext());
+    PlotView plot;// = new PlotView(this.getBaseContext());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

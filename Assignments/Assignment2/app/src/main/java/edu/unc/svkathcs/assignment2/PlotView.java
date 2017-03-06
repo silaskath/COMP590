@@ -33,10 +33,7 @@ public class PlotView extends View{
 
     private ArrayList<Double> sensor_values = new ArrayList<>();
     private ArrayList<Long> time_value = new ArrayList<>();
-    private Float radius = 15f;
-    private Float padding = 50f;
-    private Float vertical_width = 90f;
-    private Float horizontal_spacing = (getWidth() - (padding * 2)) / 6;
+    Float radius, padding, vertical_width, horizontal_spacing;
 
 
     protected void onDraw(Canvas c) {
@@ -117,6 +114,10 @@ public class PlotView extends View{
     }
 
     private void drawSensorValues(Canvas c, ArrayList<Double> ald) {
+        radius = 15f;
+        padding = 50f;
+        vertical_width = 90f;
+        horizontal_spacing = (getWidth() - (padding * 2)) / 6;
         if(ald.size() == 0)
             return;
         Paint p = new Paint();
@@ -127,6 +128,11 @@ public class PlotView extends View{
     }
 
     private void drawBackground(Canvas c) {
+        radius = 15f;
+        padding = 50f;
+        vertical_width = 90f;
+        horizontal_spacing = (getWidth() - (padding * 2)) / 6;
+
         Paint p = new Paint();
         // Draw Grid
         p.setColor(Color.LTGRAY);
