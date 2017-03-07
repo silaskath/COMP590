@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorManager sm;
     private Sensor accel, light, mag;
-    private TextView temp, accel_stat, accel_info, light_stat, light_info, mag_stat, mag_info;
+    private TextView accel_stat, accel_info, light_stat, light_info, mag_stat, mag_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         accel = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         light = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
         mag = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-        temp = (TextView) findViewById(R.id.temp);
         accel_stat = (TextView) findViewById(R.id.accel_stat);
         accel_info = (TextView) findViewById(R.id.accel_info);
         light_stat = (TextView) findViewById(R.id.light_stat);

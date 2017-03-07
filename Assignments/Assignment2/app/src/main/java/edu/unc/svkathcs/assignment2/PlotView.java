@@ -43,13 +43,13 @@ public class PlotView extends View{
     protected void onDraw(Canvas c) {
         super.onDraw(c);
         drawBackground(c);
-        String sv = "";
-        for(int i = 0; i < sensor_values.size(); i++)
-            sv = sv + Math.floor(sensor_values.get(i)) + "\n";
         Paint p = new Paint();
-        p.setColor(Color.BLACK);
-        p.setTextSize(25f);
-        c.drawText(sv, 50f, 1000f, p);
+//        String sv = "";
+//        for(int i = 0; i < sensor_values.size(); i++)
+//            sv = sv + Math.floor(sensor_values.get(i)) + "\n";
+//        p.setColor(Color.BLACK);
+//        p.setTextSize(25f);
+//        c.drawText(sv, 50f, 1000f, p);
         p.setColor(Color.BLUE);
         drawValues(c, sensor_values, p);
         p.setColor(Color.GREEN);
@@ -74,10 +74,6 @@ public class PlotView extends View{
         if(sensor_values.size() == 5)
             increaseTime();
         this.invalidate();
-    }
-
-    public void clearSensorValues() {
-        sensor_values.clear();
     }
 
     public Double getSensorMax() {
@@ -142,11 +138,6 @@ public class PlotView extends View{
             return Math.sqrt(total / std_dev_list.size());
         }
         return 0d;
-    }
-
-
-    public void clearTime() {
-        time_value.clear();
     }
 
     private void drawValues(Canvas c, ArrayList<Double> ald, Paint p) {
