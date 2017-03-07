@@ -77,17 +77,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accelClick(View v) {
-        loadGraph();
+        loadGraph(Sensor.TYPE_ACCELEROMETER);
     }
     public void lightClick(View v) {
-        loadGraph();
+        loadGraph(Sensor.TYPE_LIGHT);
     }
     public void magClick(View v) {
-        loadGraph();
+        loadGraph(Sensor.TYPE_MAGNETIC_FIELD);
     }
 
-    public void loadGraph() {
+    public void loadGraph(int sensor) {
         Intent graph = new Intent(this, GraphActivity.class);
+        graph.putExtra("sensor", sensor);
         startActivity(graph);
     }
 

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,13 +33,29 @@ public class PlotView extends View{
     }
 
     private ArrayList<Double> sensor_values = new ArrayList<>();
-    private ArrayList<Long> time_value = new ArrayList<>();
-    Float radius, padding, vertical_width, horizontal_spacing;
+    private ArrayList<Double> average_values = new ArrayList<>();
+    private ArrayList<Double> std_dev_values = new ArrayList<>();
+    private ArrayList<Integer> time_value = new ArrayList<>();
+    private Float radius, padding, vertical_width, horizontal_spacing;
+    int time = 0;
 
 
     protected void onDraw(Canvas c) {
         super.onDraw(c);
         drawBackground(c);
+        String sv = "";
+        for(int i = 0; i < sensor_values.size(); i++)
+            sv = sv + Math.floor(sensor_values.get(i)) + "\n";
+        Paint p = new Paint();
+        p.setColor(Color.BLACK);
+        p.setTextSize(25f);
+        c.drawText(sv, 50f, 1000f, p);
+        p.setColor(Color.BLUE);
+        drawValues(c, sensor_values, p);
+        p.setColor(Color.GREEN);
+        drawValues(c, average_values, p);
+        p.setColor(Color.RED);
+        drawValues(c, std_dev_values, p);
     }
 
     public void addSensorValue(Double d) {
@@ -46,6 +63,17 @@ public class PlotView extends View{
         if(sensor_values.size() > 5) {
             sensor_values.remove(0);
         }
+        average_values.add(getAverage());
+        if(average_values.size() > 5) {
+            average_values.remove(0);
+        }
+        std_dev_values.add(getStdDev());
+        if(std_dev_values.size() > 5) {
+            std_dev_values.remove(0);
+        }
+        if(sensor_values.size() == 5)
+            increaseTime();
+        this.invalidate();
     }
 
     public void clearSensorValues() {
@@ -87,6 +115,19 @@ public class PlotView extends View{
         return 0d;
     }
 
+    public void initTime() {
+        for(int i = 0; i < 7; i++) {
+            time_value.add(i);
+            time = i;
+        }
+    }
+
+    private void increaseTime() {
+        time_value.add(time);
+        time_value.remove(0);
+        time++;
+    }
+
     public Double getStdDev() {
         if (sensor_values.size() > 0) {
             double avg = getAverage();
@@ -103,27 +144,27 @@ public class PlotView extends View{
         return 0d;
     }
 
-    public void addTime(long l) {
-        time_value.add(l);
-        if(time_value.size() > 5) {
-            time_value.remove(0);
-        }
-    }
+
     public void clearTime() {
         time_value.clear();
     }
 
-    private void drawSensorValues(Canvas c, ArrayList<Double> ald) {
+    private void drawValues(Canvas c, ArrayList<Double> ald, Paint p) {
         radius = 15f;
         padding = 50f;
         vertical_width = 90f;
         horizontal_spacing = (getWidth() - (padding * 2)) / 6;
+        
+
         if(ald.size() == 0)
             return;
-        Paint p = new Paint();
-        p.setColor(Color.BLUE);
         for(int i = 0; i < ald.size(); i++){
-            c.drawCircle(horizontal_spacing + padding, (float) (ald.get(i) + 0f), radius, p);
+            c.drawCircle(horizontal_spacing * (i + 1) + padding, (float) ((6 * vertical_width+ padding - ald.get(i))), radius, p);
+            if(sensor_values.size() > i + 1) {
+                c.drawLine(horizontal_spacing * (i + 1) + padding, (float) ((6 * vertical_width + padding - ald.get(i)) - 1), horizontal_spacing * (i + 2) + padding, (float) ((6 * vertical_width + padding - ald.get(i + 1)) - 1), p);
+                c.drawLine(horizontal_spacing * (i + 1) + padding, (float) ((6 * vertical_width + padding - ald.get(i))), horizontal_spacing * (i + 2) + padding, (float) ((6 * vertical_width + padding - ald.get(i + 1))), p);
+                c.drawLine(horizontal_spacing * (i + 1) + padding, (float) ((6 * vertical_width + padding - ald.get(i)) + 1), horizontal_spacing * (i + 2) + padding, (float) ((6 * vertical_width + padding - ald.get(i + 1)) + 1), p);
+            }
         }
     }
 
@@ -132,6 +173,7 @@ public class PlotView extends View{
         padding = 50f;
         vertical_width = 90f;
         horizontal_spacing = (getWidth() - (padding * 2)) / 6;
+        Double range = getSensorMax() - getSensorMin();
 
         Paint p = new Paint();
         // Draw Grid
@@ -143,10 +185,10 @@ public class PlotView extends View{
         // Draw text on axis and descriptions
         p.setColor(Color.BLACK);
         p.setTextSize(25f);
-        for(int i = 6; i > -1; i--)
-            c.drawText(i * 10 + "", 0f, vertical_width * (6 - i) + padding, p);
+//        for(int i = 6; i > -1; i--)
+//            c.drawText(i * Math.floor(getSensorMax() / 6) + "", 0f, vertical_width * (6 - i) + padding, p);
         for(int i = 0; i < 7; i++)
-            c.drawText((i + 1) + "", horizontal_spacing * i + 45, vertical_width * 7, p);
+            c.drawText(time_value.get(i) + "", horizontal_spacing * i + 45, vertical_width * 7, p);
         ArrayList<String> descriptions = new ArrayList<>();
         descriptions.add("Value");
         descriptions.add("Mean");

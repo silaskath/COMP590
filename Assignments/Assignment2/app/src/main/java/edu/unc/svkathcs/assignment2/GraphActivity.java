@@ -16,45 +16,29 @@ import java.util.ArrayList;
 public class GraphActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sm;
-    private Sensor accel, light, mag;
-    private int current_sensor;
+    private Sensor accel, light, mag, current_sensor;
+    private int sampling_rate;
     private long last_printed = 0;
-    private ArrayList<Double> sensor_values = new ArrayList<>();
-    PlotView plot;// = new PlotView(this.getBaseContext());
+
+    PlotView plot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Bundle b = getIntent().getExtras();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        accel = sm.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
-        light = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
-        mag = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-        sm.registerListener(this, accel, 1000000);
+        current_sensor = sm.getDefaultSensor(b.getInt("sensor"));
+        sampling_rate = current_sensor.getMaxDelay();
+        sm.registerListener(this, current_sensor, sampling_rate);
+        plot = (PlotView)findViewById(R.id.plot);
+        plot.initTime();
     }
 
     public void backToMain(View v) {
         Intent back = new Intent(this, MainActivity.class);
         startActivity(back);
     }
-
-    public int getCurrentSensor() {
-        return current_sensor;
-    }
-
-    public void addSensorValue(Double d) {
-        sensor_values.add(d);
-        if (sensor_values.size() > 5) {
-            sensor_values.remove(0);
-        }
-    }
-
-    public void clearSensorValues() {
-        sensor_values.clear();
-    }
-
-
-
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -63,14 +47,10 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
             double y = event.values[1];
             double z = event.values[2];
             double data = Math.sqrt(x * x + y * y + z * z);
-            try {
-                plot.addSensorValue(data);
-            }
-            catch (Exception e){
-
-            }
+            plot.addSensorValue(data);
             last_printed = event.timestamp;
-            plot.invalidate();
+//            plot.invalidate();
+
         }
     }
 
