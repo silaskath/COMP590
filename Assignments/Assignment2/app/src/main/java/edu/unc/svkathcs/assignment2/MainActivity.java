@@ -85,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
     public void magClick(View v) {
         loadGraph(Sensor.TYPE_MAGNETIC_FIELD);
     }
+    public void aAnim(View v) {
+        Intent a_anim = new Intent(this, AccelAnimation.class);
+        startActivity(a_anim);
+    }
 
     public void loadGraph(int sensor) {
         Intent graph = new Intent(this, GraphActivity.class);

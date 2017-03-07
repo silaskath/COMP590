@@ -88,6 +88,11 @@
                 android:text="Info: "/>
         </LinearLayout>
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Accel Animation"
+        android:onClick="aAnim"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
