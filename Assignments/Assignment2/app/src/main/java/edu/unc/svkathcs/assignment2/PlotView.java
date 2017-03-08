@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.hardware.Sensor;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
@@ -37,7 +38,8 @@ public class PlotView extends View{
     private ArrayList<Double> std_dev_values = new ArrayList<>();
     private ArrayList<Integer> time_value = new ArrayList<>();
     private Float radius, padding, vertical_width, horizontal_spacing;
-    int time = 0;
+    private int time = 0;
+    private double offset = 1;
 
 
     protected void onDraw(Canvas c) {
@@ -140,21 +142,42 @@ public class PlotView extends View{
         return 0d;
     }
 
+    public void setOffset(int i) {
+        if(i == Sensor.TYPE_ACCELEROMETER)
+            offset = 1;
+        else if (i == Sensor.TYPE_LIGHT)
+            offset = 1;
+        else
+            offset = 1;
+    }
+
     private void drawValues(Canvas c, ArrayList<Double> ald, Paint p) {
         radius = 15f;
         padding = 50f;
         vertical_width = 90f;
         horizontal_spacing = (getWidth() - (padding * 2)) / 6;
+        offset = 10;
         
 
         if(ald.size() == 0)
             return;
         for(int i = 0; i < ald.size(); i++){
-            c.drawCircle(horizontal_spacing * (i + 1) + padding, (float) ((6 * vertical_width+ padding - ald.get(i))), radius, p);
+            c.drawCircle(horizontal_spacing * (i + 1) + padding,
+                    (float) ((6 * vertical_width + padding - ald.get(i) * offset)),
+                    radius, p);
             if(sensor_values.size() > i + 1) {
-                c.drawLine(horizontal_spacing * (i + 1) + padding, (float) ((6 * vertical_width + padding - ald.get(i)) - 1), horizontal_spacing * (i + 2) + padding, (float) ((6 * vertical_width + padding - ald.get(i + 1)) - 1), p);
-                c.drawLine(horizontal_spacing * (i + 1) + padding, (float) ((6 * vertical_width + padding - ald.get(i))), horizontal_spacing * (i + 2) + padding, (float) ((6 * vertical_width + padding - ald.get(i + 1))), p);
-                c.drawLine(horizontal_spacing * (i + 1) + padding, (float) ((6 * vertical_width + padding - ald.get(i)) + 1), horizontal_spacing * (i + 2) + padding, (float) ((6 * vertical_width + padding - ald.get(i + 1)) + 1), p);
+                c.drawLine(horizontal_spacing * (i + 1) + padding,
+                        (float) ((6 * vertical_width + padding - ald.get(i) * offset) - 1),
+                        horizontal_spacing * (i + 2) + padding,
+                        (float) ((6 * vertical_width + padding - ald.get(i + 1) * offset) - 1), p);
+                c.drawLine(horizontal_spacing * (i + 1) + padding,
+                        (float) ((6 * vertical_width + padding - ald.get(i) * offset)),
+                        horizontal_spacing * (i + 2) + padding,
+                        (float) ((6 * vertical_width + padding - ald.get(i + 1) * offset)), p);
+                c.drawLine(horizontal_spacing * (i + 1) + padding,
+                        (float) ((6 * vertical_width + padding - ald.get(i) * offset) + 1),
+                        horizontal_spacing * (i + 2) + padding,
+                        (float) ((6 * vertical_width + padding - ald.get(i + 1) * offset) + 1), p);
             }
         }
     }

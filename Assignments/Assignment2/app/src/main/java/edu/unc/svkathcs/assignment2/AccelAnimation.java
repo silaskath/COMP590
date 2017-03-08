@@ -1,6 +1,7 @@
 package edu.unc.svkathcs.assignment2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -42,6 +43,11 @@ public class AccelAnimation extends AppCompatActivity implements SensorEventList
         ((AnimationDrawable) imv.getBackground()).stop();
     }
 
+    public void backToMain(View v) {
+        Intent back = new Intent(this, MainActivity.class);
+        startActivity(back);
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.timestamp - last_printed >= 1e8) {
@@ -49,7 +55,7 @@ public class AccelAnimation extends AppCompatActivity implements SensorEventList
             double y = event.values[1];
             double z = event.values[2];
             double data = Math.sqrt(x * x + y * y + z * z);
-            if(data > 11d)
+            if(data > 9.75d)
                 advance();
             else
                 reset();

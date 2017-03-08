@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         mag = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         accel_stat = (TextView) findViewById(R.id.accel_stat);
         accel_info = (TextView) findViewById(R.id.accel_info);
-        light_stat = (TextView) findViewById(R.id.light_stat);
-        light_info = (TextView) findViewById(R.id.light_info);
+//        light_stat = (TextView) findViewById(R.id.light_stat);
+//        light_info = (TextView) findViewById(R.id.light_info);
         mag_stat = (TextView) findViewById(R.id.mag_stat);
         mag_info = (TextView) findViewById(R.id.mag_info);
 
@@ -50,17 +50,17 @@ public class MainActivity extends AppCompatActivity {
             accel_stat.setText("Status: Accelerometer is not present.");
             accel_info.setText("Info: No info to display.");
         }
-        if(sm.getDefaultSensor(Sensor.TYPE_LIGHT) != null) {
-            light_stat.setText("Status: Light sensor is present.");
-            light_info.setText("Info: " +
-                    light.getMaximumRange() + ", " +
-                    light.getResolution() + ", " +
-                    light.getMaxDelay());
-        }
-        else {
-            light_stat.setText("Status: Light sensor is not present.");
-            light_stat.setText("Info: No info to display.");
-        }
+//        if(sm.getDefaultSensor(Sensor.TYPE_LIGHT) != null) {
+//            light_stat.setText("Status: Light sensor is present.");
+//            light_info.setText("Info: " +
+//                    light.getMaximumRange() + ", " +
+//                    light.getResolution() + ", " +
+//                    light.getMaxDelay());
+//        }
+//        else {
+//            light_stat.setText("Status: Light sensor is not present.");
+//            light_stat.setText("Info: No info to display.");
+//        }
         if(sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null) {
             mag_stat.setText("Status: Magnetometer is present.");
             mag_info.setText("Info: " +
@@ -78,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
     public void accelClick(View v) {
         loadGraph(Sensor.TYPE_ACCELEROMETER);
     }
-    public void lightClick(View v) {
-        loadGraph(Sensor.TYPE_LIGHT);
-    }
+//    public void lightClick(View v) {
+//        loadGraph(Sensor.TYPE_LIGHT);
+//    }
     public void magClick(View v) {
         loadGraph(Sensor.TYPE_MAGNETIC_FIELD);
     }

@@ -33,6 +33,7 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
         sm.registerListener(this, current_sensor, sampling_rate);
         plot = (PlotView)findViewById(R.id.plot);
         plot.initTime();
+        plot.setOffset(b.getInt("sensor"));
     }
 
     public void backToMain(View v) {
