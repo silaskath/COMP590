@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
         imv = (ImageView) findViewById(R.id.imv);
         imv.setBackgroundResource(R.drawable.mylist);
-        ((AnimationDrawable)imv.getBackground()).start();
+//        ((AnimationDrawable)imv.getBackground()).start();
+        ((AnimationDrawable)imv.getBackground()).getFrame(1);
     }
 
     void funcUp(){
